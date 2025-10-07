@@ -56,92 +56,42 @@ Opción 1: Instalación Rápida
 Clona o descarga el repositorio:
 
 # Si tienes git instalado:
-git clone <url-del-repositorio>
-cd taller_pruebas_unitarias
+git clone <https://github.com/emily2304/taller_PruebasUnitarias.git>
+cd taller_pruebasunitarias
 
 # O descarga el ZIP y extráelo
 
 No se requieren dependencias externas (unittest viene con Python).
-Para funcionalidades opcionales (cobertura de código):
+```bash
 
 pip install coverage
 
-Opción 2: Crear el Proyecto desde Cero
-Paso 1: Crear la estructura de carpetas
-# Windows
-mkdir taller_pruebas_unitarias
-cd taller_pruebas_unitarias
-mkdir src
-mkdir tests
+```
 
-# Linux/Mac
-mkdir -p taller_pruebas_unitarias/{src,tests}
-cd taller_pruebas_unitarias
 
-Paso 2: Crear archivos vacíos
-# Windows
-type nul > src\inventario.py
-type nul > tests\test_inventario.py
-type nul > README.md
-
-# Linux/Mac
-touch src/inventario.py
-touch tests/test_inventario.py
-touch README.md
-
-Paso 3: Copiar el código
-
-Copia el contenido de los archivos proporcionados en el taller:
-
-src/inventario.py - Código de la aplicación
-
-tests/test_inventario.py - Suite de pruebas
-
-📁 Estructura del Proyecto
-taller_pruebas_unitarias/
-│
-├── README.md                   # Este archivo
-├── requirements.txt            # Dependencias (opcional)
-│
-├── src/
-│   └── inventario.py           # Código fuente de la aplicación
-│
-└── tests/
-    └── test_inventario.py      # Pruebas unitarias
-
-🚀 Guía Paso a Paso
-PASO 1: Configuración Inicial (2 minutos)
+# Guía para el taller
+PASO 1: Configuración Inicial 
 
 1.1. Navega al directorio del proyecto
 
-cd taller_pruebas_unitarias
+cd taller_pruebasunitarias
 
-
-1.2. Verifica que los archivos existan
-
-# Windows
-dir /s
-
-# Linux/Mac
-ls -R
-
-
-1.3. Revisa el código fuente
-Abre src/inventario.py en tu editor para familiarizarte con:
+1.2. Revisa el código fuente
+Abre inventario.py podras ver:
 
 Clase Producto: gestión de productos individuales
 
 Clase Inventario: gestión del inventario completo
 
-PASO 2: Ejecución Básica de Pruebas (2 minutos)
+PASO 2: Ejecución Básica de Pruebas 
 # Opción 1: Ejecución estándar
-python -m unittest tests.test_inventario
+python -m unittest test_inventario
 
-# Opción 2: Con modo verboso (recomendado para aprendizaje)
-python -m unittest tests.test_inventario -v
+# Opción 2: Con modo verboso 
+python -m unittest test_inventario -v
 
 # Opción 3: Ejecutar el archivo directamente
-python tests/test_inventario.py
+python test_inventario.py
 
 
 ✅ Salida exitosa:
@@ -162,19 +112,19 @@ AssertionError: 5010 != 5000
 Ran 20 tests in 0.006s
 FAILED (failures=1)
 
-PASO 3: Ejecutar Pruebas Específicas (1 minuto)
+PASO 3: Ejecutar Pruebas Específicas 
 # Solo pruebas de la clase Producto
-python -m unittest tests.test_inventario.TestProducto -v
+python -m unittest test_inventario.TestProducto -v
 
 # Solo pruebas de la clase Inventario
-python -m unittest tests.test_inventario.TestInventario -v
+python -m unittest test_inventario.TestInventario -v
 
 # Ejecutar un test individual
-python -m unittest tests.test_inventario.TestProducto.test_aplicar_descuento -v
+python -m unittest test_inventario.TestProducto.test_aplicar_descuento -v
 
-PASO 4: Demostración de Detección de Bugs (2 minutos)
+PASO 4: Demostración de Detección de Bugs 
 
-Edita src/inventario.py, línea 18 del método calcular_valor_total:
+Edita inventario.py, línea 18 del método calcular_valor_total:
 
 # ANTES (correcto):
 def calcular_valor_total(self):
@@ -198,9 +148,9 @@ AssertionError: 5010 != 5000
 
 Corrige el bug eliminando el + 10 y vuelve a ejecutar las pruebas.
 
-PASO 5: Medición de Cobertura de Código (2 minutos - OPCIONAL)
+PASO 5: Medición de Cobertura de Código (OPCIONAL)
 pip install coverage
-coverage run -m unittest tests.test_inventario
+coverage run -m unittest test_inventario
 coverage report -m
 
 
@@ -213,15 +163,7 @@ tests/test_inventario.py     87      0   100%
 -------------------------------------------------------
 TOTAL                       132      0   100%
 
-
-Reporte HTML (opcional):
-
-coverage html
-
-
-Abre htmlcov/index.html en tu navegador.
-
-PASO 6: Análisis de los Tests (1 minuto)
+PASO 6: Análisis de los Tests 
 
 Ejemplo:
 
@@ -243,8 +185,8 @@ Tipos de tests:
 
 🔄 Límite
 
-🎯 Ejercicios Prácticos
-Ejercicio 1: Agregar Nuevo Método y Tests (5 minutos)
+Ejercicios Prácticos
+Ejercicio 1: Agregar Nuevo Método y Tests 
 
 Objetivo: Implementar y probar un nuevo método
 
@@ -272,7 +214,7 @@ Ejecuta:
 
 python -m unittest tests.test_inventario -v
 
-Ejercicio 2: TDD - Test Driven Development (10 minutos)
+Ejercicio 2: TDD - Test Driven Development 
 
 Objetivo: Escribir primero el test, luego la implementación
 
@@ -301,30 +243,7 @@ def test_reducir_mas_stock_del_disponible(self):
     with self.assertRaises(ValueError):
         producto.reducir_stock(10)
 
-📚 Recursos Adicionales
-Documentación Oficial
-
-unittest - Python Docs
-
-coverage.py - Documentación
-
-Comandos Útiles
-python -m unittest discover
-python -m unittest tests.test_inventario -q
-python -m unittest tests.test_inventario --failfast
-python -m unittest --help
-
-Assertions Más Comunes
-Assertion	Uso
-assertEqual(a, b)	Verifica que a == b
-assertNotEqual(a, b)	Verifica que a != b
-assertTrue(x)	Verifica que x es True
-assertFalse(x)	Verifica que x es False
-assertRaises(Exception)	Verifica que se lance una excepción
-assertIn(a, b)	Verifica que a esté en b
-assertIsNone(x)	Verifica que x es None
-assertGreater(a, b)	Verifica que a > b
-🔍 Solución de Problemas
+Solución de Problemas
 
 Problema 1: ModuleNotFoundError: No module named 'inventario'
 Causa: Python no encuentra el módulo.
