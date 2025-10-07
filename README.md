@@ -112,35 +112,35 @@ AssertionError: 5010 != 5000
 Ran 20 tests in 0.006s
 FAILED (failures=1)
 
-PASO 3: Ejecutar Pruebas Específicas 
-# Solo pruebas de la clase Producto
+# PASO 3: Ejecutar Pruebas Específicas 
+### Solo pruebas de la clase Producto
 python -m unittest test_inventario.TestProducto -v
 
-# Solo pruebas de la clase Inventario
+### Solo pruebas de la clase Inventario
 python -m unittest test_inventario.TestInventario -v
 
-# Ejecutar un test individual
+### Ejecutar un test individual
 python -m unittest test_inventario.TestProducto.test_aplicar_descuento -v
 
-PASO 4: Demostración de Detección de Bugs 
+# PASO 4: Demostración de Detección de Bugs 
 
 Edita inventario.py, línea 18 del método calcular_valor_total:
 
-# ANTES (correcto):
+### ANTES (correcto):
 def calcular_valor_total(self):
     return self.precio * self.cantidad
 
-# DESPUÉS (con bug):
+### DESPUÉS (con bug):
 def calcular_valor_total(self):
     return self.precio * self.cantidad + 10  # Bug agregado
 
 
-Ejecuta las pruebas nuevamente:
+#### Ejecuta las pruebas nuevamente:
 
 python -m unittest tests.test_inventario -v
 
 
-Salida:
+### Salida:
 
 FAIL: test_calcular_valor_total (test_inventario.TestProducto)
 AssertionError: 5010 != 5000
@@ -148,7 +148,7 @@ AssertionError: 5010 != 5000
 
 Corrige el bug eliminando el + 10 y vuelve a ejecutar las pruebas.
 
-PASO 5: Medición de Cobertura de Código (OPCIONAL)
+# PASO 5: Medición de Cobertura de Código (OPCIONAL)
 pip install coverage
 coverage run -m unittest test_inventario
 coverage report -m
@@ -163,7 +163,7 @@ tests/test_inventario.py     87      0   100%
 -------------------------------------------------------
 TOTAL                       132      0   100%
 
-PASO 6: Análisis de los Tests 
+# PASO 6: Análisis de los Tests 
 
 Ejemplo:
 
