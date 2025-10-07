@@ -85,14 +85,19 @@ Clase Inventario: gestión del inventario completo
 
 PASO 2: Ejecución Básica de Pruebas 
 # Opción 1: Ejecución estándar
+```bash
 python -m unittest test_inventario
+```
 
 # Opción 2: Con modo verboso 
+```bash
 python -m unittest test_inventario -v
+```
 
 # Opción 3: Ejecutar el archivo directamente
+```bash
 python test_inventario.py
-
+```
 
 ✅ Salida exitosa:
 
@@ -114,13 +119,19 @@ FAILED (failures=1)
 
 # PASO 3: Ejecutar Pruebas Específicas 
 ### Solo pruebas de la clase Producto
+```bash
 python -m unittest test_inventario.TestProducto -v
+```
 
 ### Solo pruebas de la clase Inventario
+```bash
 python -m unittest test_inventario.TestInventario -v
+```
 
 ### Ejecutar un test individual
+```bash
 python -m unittest test_inventario.TestProducto.test_aplicar_descuento -v
+```
 
 # PASO 4: Demostración de Detección de Bugs 
 
@@ -136,9 +147,9 @@ def calcular_valor_total(self):
 
 
 #### Ejecuta las pruebas nuevamente:
-
+```bash
 python -m unittest tests.test_inventario -v
-
+```
 
 ### Salida:
 
@@ -149,10 +160,15 @@ AssertionError: 5010 != 5000
 Corrige el bug eliminando el + 10 y vuelve a ejecutar las pruebas.
 
 # PASO 5: Medición de Cobertura de Código (OPCIONAL)
+```bash
 pip install coverage
+```
+```bash
 coverage run -m unittest test_inventario
+```
+```bash
 coverage report -m
-
+```
 
 Salida esperada:
 
@@ -163,27 +179,6 @@ tests/test_inventario.py     87      0   100%
 -------------------------------------------------------
 TOTAL                       132      0   100%
 
-# PASO 6: Análisis de los Tests 
-
-Ejemplo:
-
-def test_nombre_descriptivo(self):
-    """Documentación del propósito del test"""
-    # 1. ARRANGE
-    producto = Producto("Laptop", 1000, 5)
-    # 2. ACT
-    valor = producto.calcular_valor_total()
-    # 3. ASSERT
-    self.assertEqual(valor, 5000)
-
-
-Tipos de tests:
-
-✅ Positivos
-
-❌ Negativos
-
-🔄 Límite
 
 # Ejercicios Prácticos
 ## Ejercicio 1: Agregar Nuevo Método y Tests 
@@ -212,8 +207,9 @@ def test_producto_limite_premium(self):
 
 Ejecuta:
 
+```bash
 python -m unittest tests.test_inventario -v
-
+```
 ## Ejercicio 2: TDD - Test Driven Development 
 
 Objetivo: Escribir primero el test, luego la implementación
@@ -238,15 +234,16 @@ Problema 1: ModuleNotFoundError: No module named 'inventario'
 Causa: Python no encuentra el módulo.
 Solución:
 
-cd taller_pruebas_unitarias
+cd taller_pruebasunitarias
+```bash
 python -m unittest tests.test_inventario
-
+```
 
 Problema 2: No module named coverage
 Solución:
-
+```bash
 pip install coverage
-
+```
 
 Problema 3: Los tests pasan pero no deberían
 Solución:
@@ -257,12 +254,10 @@ Agrega prints para debug:
 
 print(f"Resultado obtenido: {resultado}")
 
-
 Ejecuta con -v para más detalles.
 
 Problema 4: python: command not found
 Solución:
-
+```bash
 python3 -m unittest tests.test_inventario
-# O en Windows:
-py -m unittest tests.test_inventario
+```
