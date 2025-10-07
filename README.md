@@ -185,8 +185,8 @@ Tipos de tests:
 
 🔄 Límite
 
-Ejercicios Prácticos
-Ejercicio 1: Agregar Nuevo Método y Tests 
+# Ejercicios Prácticos
+## Ejercicio 1: Agregar Nuevo Método y Tests 
 
 Objetivo: Implementar y probar un nuevo método
 
@@ -214,7 +214,7 @@ Ejecuta:
 
 python -m unittest tests.test_inventario -v
 
-Ejercicio 2: TDD - Test Driven Development 
+## Ejercicio 2: TDD - Test Driven Development 
 
 Objetivo: Escribir primero el test, luego la implementación
 
@@ -232,18 +232,7 @@ def calcular_precio_con_iva(self, porcentaje_iva):
     iva = self.precio * (porcentaje_iva / 100)
     return self.precio + iva
 
-Ejercicio 3: Debuggear con Tests (5 minutos)
-def test_reducir_stock_exacto(self):
-    producto = Producto("Ratón", 15, 5)
-    producto.reducir_stock(5)
-    self.assertEqual(producto.cantidad, 0)
-
-def test_reducir_mas_stock_del_disponible(self):
-    producto = Producto("Ratón", 15, 5)
-    with self.assertRaises(ValueError):
-        producto.reducir_stock(10)
-
-Solución de Problemas
+## Solución de Problemas
 
 Problema 1: ModuleNotFoundError: No module named 'inventario'
 Causa: Python no encuentra el módulo.
